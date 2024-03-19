@@ -7,6 +7,7 @@ import pageobject.BaseFunc;
 
 public class SubcategoriesPage {
     private final By SUBCATEGORY_NAME = By.xpath(".//span[@class='cat-title']");
+    private final By SUBCATEGORY_PAGE_TITLE = By.tagName("h1");
     private BaseFunc baseFunc;
 
     public SubcategoriesPage(BaseFunc baseFunc) {
@@ -24,6 +25,10 @@ public class SubcategoriesPage {
                 break;
             }
         }
+
         Assertions.assertTrue(isSubcategoryFound, "Can't find subcategory " + subcategoryName);
+
+        baseFunc.waitForText(SUBCATEGORY_PAGE_TITLE, subcategoryName);
+
     }
 }
