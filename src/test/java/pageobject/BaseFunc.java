@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.security.Key;
 import java.time.Duration;
 import java.util.List;
 
@@ -70,6 +71,17 @@ public class BaseFunc {
         WebElement input = findElement(locator);
         input.clear();
         input.sendKeys(text);
+    }
+
+    public void typeTextInCustomField(By locator, String text) {
+        WebElement input = findElement(locator);
+//        input.click();
+        hardClick(input);
+
+            input.sendKeys(Keys.COMMAND + "a");
+            input.sendKeys(Keys.DELETE);
+
+            input.sendKeys(text);
     }
 
     public void pressEnter(By locator) {
